@@ -13,7 +13,7 @@ export default function Dev() {
 
                 </div>
                 <h2>Website is under construction</h2>
-                <h3 className='fs-6'>Meanwhile, checkout today's <Link to="/dashboard">Weather</Link></h3>
+                <h3 className='fs-6'>Meanwhile, checkout today's <Link to="/weather/">Weather</Link></h3>
             </div >
         </>
     )
