@@ -10,7 +10,7 @@ export default function Brand() {
                     <img src={Brandlogo} alt="Brand logo" />
                 </Link>
 
-                <h1 className='fs-3 m-0'><Link to='/' className='link'>Forcasting App</Link></h1>
+                <h1 className='fs-3 m-0'><Link to='/weather/' className='link'>Forcasting App</Link></h1>
             </div>
         </>
     )
