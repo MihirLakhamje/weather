@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function DailyUpdate(props) {
-    let Date_Format = new Intl.DateTimeFormat(undefined, { dateStyle: "medium" });
+    let Date_Format = new Intl.DateTimeFormat("IN", { dateStyle: "short" });
     let Day_Format = new Intl.DateTimeFormat(undefined, { weekday: "long" });
 
     return (
