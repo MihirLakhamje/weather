@@ -19,9 +19,11 @@ export default function Dashboard() {
     // Daily update state
     const [daily, setDaily] = useState();
 
+    // Update location
     const [location, setLocation] = useState();
 
-
+    // map all weather icons remotely
+    const IconN = () => { return `img/animated/${Icon_Map.get(cIcon)}.svg` }
 
     async function getWeather() {
 
@@ -44,17 +46,18 @@ export default function Dashboard() {
 
 
         setDaily(data.days);
-        // setHourly(data.days);
-        navigator.geolocation.getCurrentPosition(successCall, positionError);
 
+        // To get users position
+        navigator.geolocation.getCurrentPosition(successCall, positionError);
         function successCall() {
             return geoObj;
         }
-
         function positionError() {
             return ("There is error getting your location. Please refresh the page.");
         }
     }
+
+    // This api for fetching exact location and display state and city
     async function getlocation() {
         let url = "https://ipinfo.io/json?token=348ec8e3fde68f";
         let res = await fetch(url);
@@ -70,13 +73,8 @@ export default function Dashboard() {
         getWeather()
         getlocation()
     }, [location]);
-    const IconN = () => { return `img/animated/${Icon_Map.get(cIcon)}.svg` }
 
 
-
-    // let Date_Format = new Intl.DateTimeFormat(undefined, { dateStyle: "medium" });
-
-    // let timestamp = new Intl.DateTimeFormat('eu-US').format();
 
     return (
         <>
