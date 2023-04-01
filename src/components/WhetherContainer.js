@@ -12,11 +12,11 @@ export default function WhetherContainer() {
     return (
         <>
             <Routes>
-                <Route exact path='/' element={<Dashboard />} />
+                <Route exact path='/weather/' element={<Dashboard />} />
 
-                <Route path='/map' element={<Map />} />
+                <Route path='/weather/map' element={<Map />} />
 
-                <Route path='/calender' element={<Calender />} />
+                <Route path='/weather/calender' element={<Calender />} />
             </Routes>
         </>
     )
