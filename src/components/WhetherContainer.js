@@ -12,7 +12,7 @@ export default function WhetherContainer() {
     return (
         <>
             <Routes>
-                <Route path='/' element={<Dashboard />} />
+                <Route eaxct path='/' element={<Dashboard />} />
 
                 <Route path='/map' element={<Map />} />
 
