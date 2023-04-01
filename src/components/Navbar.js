@@ -12,15 +12,15 @@ export default function Navbar() {
 
             <ul className="list-group d-flex mt-3">
                 <Link to='/' className='link'>
-                    <li className={`list-group-item py-3 ${location.pathname === "/weather/" ? 'active' : ""}`}>Weather</li>
+                    <li className={`list-group-item py-3 ${location.pathname === "weather/" ? 'active' : ""}`}>Weather</li>
                 </Link>
 
                 <Link to='/map' className='link'>
-                    <li className={`list-group-item py-3 ${location.pathname === "/weather/map" ? 'active' : ""}`}>Map</li>
+                    <li className={`list-group-item py-3 ${location.pathname === "weather/map" ? 'active' : ""}`}>Map</li>
                 </Link>
 
                 <Link to='/calender' className='link'>
-                    <li className={`list-group-item py-3 ${location.pathname === "/weather/calender" ? 'active' : ""}`}>Calender</li>
+                    <li className={`list-group-item py-3 ${location.pathname === "weather/calender" ? 'active' : ""}`}>Calender</li>
                 </Link>
             </ul>
         </>
