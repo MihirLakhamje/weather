@@ -22,8 +22,7 @@ export default function Dashboard() {
     // Update location
     const [location, setLocation] = useState();
 
-    // map all weather icons remotely
-    const IconN = () => { return `img/animated/${Icon_Map.get(cIcon)}.svg` }
+
 
     async function getWeather() {
 
@@ -57,6 +56,7 @@ export default function Dashboard() {
         }
     }
 
+
     // This api for fetching exact location and display state and city
     async function getlocation() {
         let url = "https://ipinfo.io/json?token=348ec8e3fde68f";
@@ -74,7 +74,8 @@ export default function Dashboard() {
         getlocation()
     }, [location]);
 
-
+    // map all weather icons remotely
+    const IconN = () => { return `./img/animated/${Icon_Map.get(cIcon)}.svg` }
 
     return (
         <>
