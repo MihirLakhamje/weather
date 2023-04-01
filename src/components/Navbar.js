@@ -10,7 +10,7 @@ export default function Navbar() {
     return (
         <>
 
-            <ul className="list-group d-flex mt-5">
+            <ul className="list-group d-flex mt-3">
                 <Link to='/' className='link'>
                     <li className={`list-group-item py-3 ${location.pathname === "/" ? 'active' : ""}`}>Weather Forcast</li>
                 </Link>

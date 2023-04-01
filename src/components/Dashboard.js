@@ -14,6 +14,7 @@ export default function Dashboard() {
     const [cPressure, setCPressure] = useState();
     const [ctime, setCTime] = useState();
     const [cIcon, setCIcon] = useState();
+    const [cHumid, setCHumid] = useState();
 
     // Daily update state
     const [daily, setDaily] = useState();
@@ -25,21 +26,22 @@ export default function Dashboard() {
     async function getWeather() {
 
         const key = process.env.REACT_APP_API_KEY;
-        const { data } = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/mumbai/2023-03-31/2023-04-07?unitGroup=us&include=days%2Ccurrent&key=${key}&contentType=json`);
-        console.log(data)
+        const { data } = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/mumbai?unitGroup=us&include=days%2Ccurrent&key=${key}&contentType=json`);
         let geoObj = {
             lat: data.latitude,
             lon: data.longitude
         }
 
         // Destructuring currentConditions object
-        const { temp: currTemp, windspeed: currWindSpeed, conditions: currStatus, pressure: currPressure, datetimeEpoch: currTime, icon: currIcon } = data.currentConditions;
+        const { temp: currTemp, windspeed: currWindSpeed, conditions: currStatus, pressure: currPressure, datetimeEpoch: currTime, icon: currIcon, humidity: humid } = data.currentConditions;
         setCTemp(currTemp)
         setCWindspeed(currWindSpeed)
         setCStatus(currStatus)
         setCPressure(currPressure)
         setCTime(currTime * 1000)
         setCIcon(currIcon)
+        setCHumid(humid)
+
 
         setDaily(data.days);
         // setHourly(data.days);
@@ -50,18 +52,17 @@ export default function Dashboard() {
         }
 
         function positionError() {
-            alert("There is error getting your location. Please refresh the page.");
+            return ("There is error getting your location. Please refresh the page.");
         }
     }
     async function getlocation() {
         let url = "https://ipinfo.io/json?token=348ec8e3fde68f";
         let res = await fetch(url);
         let data = await res.json();
-        let city, state, country;
+        let city, state;
         city = data.city;
         state = data.region;
-        country = data.country;
-        let loc = `${city}, ${state}, ${country}`;
+        let loc = `${city}, ${state}`;
         setLocation(loc);
     }
 
@@ -79,32 +80,35 @@ export default function Dashboard() {
 
     return (
         <>
-            <ClimatePanel temperature={Math.round(cTemp)} pressure={Math.round(cPressure)} windspeed={Math.round(cWindSpeed)} status={cStatus} time={ctime} iconNum={IconN()} location={location} />
+            <ClimatePanel temperature={Math.round(cTemp)} pressure={Math.round(cPressure)} windspeed={Math.round(cWindSpeed)} status={cStatus} time={ctime} humid={cHumid} iconNum={IconN()} location={location} />
 
-            <table className="table mt-3">
-                <thead>
-                    <tr>
-                        <th scope="col">Days</th>
-                        <th scope="col">Avg. Temp</th>
-                        <th scope="col">Humidity</th>
-                        <th scope="col">Wind Speed</th>
-                        <th scope="col">Pressure</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {daily && daily.map((days, index) => {
-                        // Destructuring days object
-                        const { datetimeEpoch: day, temp: avgTemp, humidity: humid, windspeed: windSpeed, pressure: Pressure, conditions: Status, icon: Icon } = days;
-                        const IconNday = () => { return `img/animated/${Icon_Map.get(Icon)}.svg` }
-                        // wrap in fragment for unique key
-                        return <React.Fragment key={index}>
-                            <DailyUpdate dailyTemp={Math.round(avgTemp)} day={day * 1000} humid={Math.round(humid)} windspeed={Math.round(windSpeed)} pressure={Math.round(Pressure)} status={Status} iconNum={IconNday()} />
-                        </React.Fragment>
-                    })
-                    }
-                </tbody>
-            </table>
+            <div style={{ overflowX: "auto" }}>
+                <h2 className='mt-4'>Daily Update</h2>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Days</th>
+                            <th scope="col">Temp</th>
+                            <th scope="col">Humidity</th>
+                            <th scope="col">Wind</th>
+                            <th scope="col">Pressure</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {daily && daily.map((days, index) => {
+                            // Destructuring days object
+                            const { datetimeEpoch: day, tempmax: avgTemp, humidity: humid, windspeed: windSpeed, pressure: Pressure, conditions: Status, icon: Icon } = days;
+                            const IconNday = () => { return `img/animated/${Icon_Map.get(Icon)}.svg` }
+                            // wrap in fragment for unique key
+                            return <React.Fragment key={index}>
+                                <DailyUpdate dailyTemp={Math.round(avgTemp)} day={day * 1000} humid={Math.round(humid)} windspeed={Math.round(windSpeed)} pressure={Math.round(Pressure)} status={Status} iconNum={IconNday()} />
+                            </React.Fragment>
+                        })
+                        }
+                    </tbody>
+                </table>
+            </div>
 
         </>
     )

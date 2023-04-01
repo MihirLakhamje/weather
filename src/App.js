@@ -9,11 +9,11 @@ function App() {
 		<>
 			<div className='container-fluid'>
 				<Row >
-					<Col lg={3} className=' p-5'>
+					<Col lg={3} className=' p-3 '>
 						<Brand />
 						<Navbar />
 					</Col>
-					<Col lg={9} className=' p-5'>
+					<Col lg={9} className=' p-3'>
 						<WhetherContainer />
 					</Col>
 				</Row>

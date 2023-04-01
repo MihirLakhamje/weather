@@ -6,10 +6,10 @@ export default function ClimatePanel(props) {
     let Time_Format = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit" });
     return (
         <>
-            <Card.Body className='border p-4 rounded'>
+            <Card.Body className='border p-3  rounded'>
                 <Row>
-                    <Col sm={7}>
-                        <div className='d-flex flex-column gap-5  me-3'>
+                    <Col sm={12} md={6} lg={7} className=''>
+                        <div className='d-flex flex-column gap-5  me-lg-3'>
                             <div className='d-flex justify-content-between'>
                                 <div>
                                     <i className="fa-sharp fa-solid fa-location-dot"></i>
@@ -21,7 +21,7 @@ export default function ClimatePanel(props) {
                             <div className="text-center">
                                 <h2 className='fs-1'>{props.temperature}&#8451;</h2>
                             </div>
-                            <div className='d-flex justify-content-between'>
+                            <div className='d-flex justify-content-between flex-grow-1 flex-shrink-1 flex-md-row'>
                                 <div>
                                     <i className="fa-solid fa-wind"></i>
                                     <span className='ms-1'>{props.pressure} mb</span>
@@ -31,15 +31,16 @@ export default function ClimatePanel(props) {
                                     <span className='ms-1'>{props.windspeed} Km/h</span>
                                 </div>
                                 <div>
-                                    <i className="fa-regular fa-sun"></i>
-                                    <span className='ms-1'>{props.status} </span>
+                                    <i className="fa-solid fa-person-rays"></i>
+                                    <span className='ms-1'>{props.humid}%</span>
                                 </div>
                             </div>
                         </div>
                     </Col>
-                    <Col sm={5}>
-                        <div className='d-flex justify-content-center' style={{ height: "200px" }}>
+                    <Col sm={12} md={6} lg={5}>
+                        <div className='d-flex justify-content-center flex-column align-items-center' style={{ height: "200px" }}>
                             <img src={props.iconNum} alt="" className='current-img' />
+                            <h4 className='mb-4'>{props.status} </h4>
                         </div>
                     </Col>
                 </Row>
