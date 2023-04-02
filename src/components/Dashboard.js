@@ -27,7 +27,7 @@ export default function Dashboard() {
     async function getWeather() {
 
         const key = process.env.REACT_APP_API_KEY;
-        const { data } = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/mumbai?unitGroup=us&include=days%2Ccurrent&key=${key}&contentType=json`);
+        const { data } = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/mumbai?unitGroup=metric&include=days%2Ccurrent&key=${key}&contentType=json`);
         let geoObj = {
             lat: data.latitude,
             lon: data.longitude
