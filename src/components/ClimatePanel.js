@@ -4,6 +4,11 @@ import { Card, Col, Row } from 'react-bootstrap'
 export default function ClimatePanel(props) {
     let time = Date.now();
     let Time_Format = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit" });
+
+    function reloadPage() {
+        console.log("hehe");
+        window.location.reload()
+    }
     return (
         <>
             <Card.Body className='border p-3  rounded'>
@@ -16,7 +21,11 @@ export default function ClimatePanel(props) {
                                     <span className='ms-2'>{props.location}</span>
 
                                 </div>
-                                <span>Today, {Time_Format.format(time)}</span>
+                                <div>
+
+                                    <i onClick={reloadPage} className="fa-solid fa-arrows-rotate me-3"></i>
+                                    <span>Today, {Time_Format.format(time)}</span>
+                                </div>
                             </div>
                             <div className="text-center">
                                 <h2 className='fs-1'>{props.temperature}&#8451;</h2>
