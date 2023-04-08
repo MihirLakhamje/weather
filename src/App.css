@@ -33,3 +33,8 @@
 .fa-arrows-rotate:hover {
 	cursor: pointer;
 }
+
+.line-solid{
+	height: 2px;
+	background-color: #dadada;
+}

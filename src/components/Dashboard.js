@@ -62,6 +62,7 @@ export default function Dashboard() {
         let url = "https://ipinfo.io/json?token=348ec8e3fde68f";
         let res = await fetch(url);
         let data = await res.json();
+        console.log(data)
         let city, state;
         city = data.city;
         state = data.region;
@@ -75,7 +76,7 @@ export default function Dashboard() {
     }, [location]);
 
     // map all weather icons remotely
-    const IconN = () => { return `./img/animated/${Icon_Map.get(cIcon)}.svg` }
+    const IconN = () => { return `/weather/img/animated/${Icon_Map.get(cIcon)}.svg` }
 
     return (
         <>

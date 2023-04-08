@@ -1,14 +1,17 @@
-import React, { } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 
 export default function ClimatePanel(props) {
-    let time = Date.now();
+    const [time, setTime] = useState(new Date())
     let Time_Format = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit" });
-
     function reloadPage() {
-        console.log("hehe");
-        window.location.reload()
+        window.location.reload();
     }
+
+    useEffect(() => {
+        setInterval(() => { setTime(new Date()) }, 60000);
+    }, [])
+
     return (
         <>
             <Card.Body className='border p-3  rounded'>
