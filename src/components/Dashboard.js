@@ -98,7 +98,7 @@ export default function Dashboard() {
                         {daily && daily.map((days, index) => {
                             // Destructuring days object
                             const { datetimeEpoch: day, tempmax: avgTemp, humidity: humid, windspeed: windSpeed, pressure: Pressure, conditions: Status, icon: Icon } = days;
-                            const IconNday = () => { return `img/animated/${Icon_Map.get(Icon)}.svg` }
+                            const IconNday = () => { return `weather/img/animated/${Icon_Map.get(Icon)}.svg` }
                             // wrap in fragment for unique key
                             return <React.Fragment key={index}>
                                 <DailyUpdate dailyTemp={Math.round(avgTemp)} day={day * 1000} humid={Math.round(humid)} windspeed={Math.round(windSpeed)} pressure={Math.round(Pressure)} status={Status} iconNum={IconNday()} />
