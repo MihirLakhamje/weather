@@ -62,7 +62,6 @@ export default function Dashboard() {
         let url = "https://ipinfo.io/json?token=348ec8e3fde68f";
         let res = await fetch(url);
         let data = await res.json();
-        console.log(data)
         let city, state;
         city = data.city;
         state = data.region;

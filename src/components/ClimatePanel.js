@@ -21,12 +21,12 @@ export default function ClimatePanel(props) {
                             <div className='d-flex justify-content-between'>
                                 <div>
                                     <i className="fa-sharp fa-solid fa-location-dot"></i>
-                                    <span className='ms-2'>{props.location}</span>
+                                    <span className='ms-1'>{props.location}</span>
 
                                 </div>
                                 <div>
 
-                                    <i onClick={reloadPage} className="fa-solid fa-arrows-rotate me-3"></i>
+                                    <i onClick={reloadPage} className="fa-solid fa-arrows-rotate pointer me-1"></i>
                                     <span>Today, {Time_Format.format(time)}</span>
                                 </div>
                             </div>
