@@ -15,7 +15,7 @@ export default function DailyUpdate(props) {
                         </div>
                     </div>
                 </th>
-                <td>{props.dailyTemp}&#8451;</td>
+                <td><span>{props.dailyTemp}&#8451;</span></td>
                 <td>{props.humid}%</td>
                 <td>{props.windspeed} Km/h</td>
                 <td>{props.pressure} mb</td>

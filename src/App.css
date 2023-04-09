@@ -5,7 +5,7 @@
 }
 
 .link:active {
-	color: aqua;
+	color: black !important;
 }
 
 .link li {
@@ -30,6 +30,15 @@
 	width: 180px;
 }
 
-.fa-arrows-rotate:hover {
-	cursor: pointer;
+.pointer:hover {
+	cursor: pointer !important;
+}
+
+.line-solid{
+	height: 2px;
+	background-color: #dadada;
+}
+
+.small-icon{
+	width: 48px;
 }
